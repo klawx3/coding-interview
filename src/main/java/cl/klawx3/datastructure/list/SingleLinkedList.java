@@ -76,10 +76,30 @@ public class SingleLinkedList implements Iterator<Integer>,Iterable<Integer>{
         while(actualNodeI != null && actualNodeI.nextNode != null){
             if(hp.get(actualNodeI.nextNode.data) != null){ // elimino
                 actualNodeI.nextNode = actualNodeI.nextNode.nextNode;
+                continue;
             }else{
                 hp.put(actualNodeI.nextNode.data, true);
             }
             actualNodeI = actualNodeI.nextNode;
+        }
+    }
+
+    public void deleteDuplicateElementsNoBuffer(){
+        Node iNode,jNode;
+        iNode = jNode = startNode;
+
+        while(iNode != null){
+            jNode = iNode;
+            while(jNode != null){
+                if(jNode.nextNode != null){
+                    if(iNode.data == jNode.nextNode.data){
+                        jNode.nextNode = jNode.nextNode.nextNode;
+                        continue;
+                    }
+                }
+                jNode = jNode.nextNode;
+            }
+            iNode = iNode.nextNode;
         }
     }
 
@@ -113,6 +133,10 @@ public class SingleLinkedList implements Iterator<Integer>,Iterable<Integer>{
             }
             actualNode = actualNode.nextNode;
         }
+    }
+
+    public int get_Nth_LastElement(int i) {
+        return -1;
     }
     
 }
