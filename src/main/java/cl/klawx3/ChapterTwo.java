@@ -6,5 +6,9 @@ public class ChapterTwo {
     public void deleteDuplicatesElements(SingleLinkedList ls){
         ls.deleteDuplicatesElements();
     }
+
+    public void deleteMiddleNode(SingleLinkedList ls){
+        
+    }
     
 }

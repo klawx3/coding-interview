@@ -138,5 +138,120 @@ public class SingleLinkedList implements Iterator<Integer>,Iterable<Integer>{
     public int get_Nth_LastElement(int i) {
         return -1;
     }
+
+    private int count(){
+        int count = 0;
+        Node n = startNode;
+        while(n != null){
+            count++;
+            n = n.nextNode;
+        }
+        return count;
+    }
+
+    public Node getNode(int pos){
+        Node n = startNode;
+        int count = 0;
+        while(n != null){
+            if(count == pos)
+                break;
+
+            n = n.nextNode; count++;
+        }
+        return n;
+    }
+
+    public void deleteNode(Node middleNode) {
+        Node n = middleNode;
+        while(n != null){
+            if(n.nextNode  != null){
+                n.data = n.nextNode.data;
+            }
+            if(n.nextNode.nextNode == null){
+                n.nextNode = null;
+            }           
+            n = n.nextNode;
+        }
+    }
+
+    public void deleteMiddleNode() {
+        int middleNode = count() / 2 - 1;
+        Node n = startNode;
+        int nodeCount = 0;
+        if(middleNode == 0){
+            startNode = startNode.nextNode;
+        }else{
+            while(true){
+                if(nodeCount + 1 == middleNode ){
+                    n.nextNode = n.nextNode.nextNode;
+                    break;
+                }
+                n = n.nextNode;
+                nodeCount++;
+            }
+        }
+    }
+
+    public void deleteMiddleNodeUsing3Pointers(){
+        Node slowPointer = startNode.nextNode;
+        Node backNode = startNode;
+        Node fastPointer = startNode.nextNode.nextNode;
+        
+
+        while(fastPointer != null){
+            if(fastPointer.nextNode != null){
+                fastPointer = fastPointer.nextNode.nextNode;
+                if(fastPointer == null){
+                    break;
+                }
+            }else{
+                break;
+            }
+
+            backNode = backNode.nextNode;
+            slowPointer = slowPointer.nextNode;
+        }
+
+        backNode.nextNode = slowPointer.nextNode; // delete
+
+    }
+
+    public boolean isListAPalindrome(){
+        Node node = startNode;
+        return true;
+    }
+
+    public void partionListArround(int partitionNumber) {
+        Node leftStartNode = null;
+        Node leftEndNode = null;
+
+        Node rightStartNode = null;
+        Node rightEndNode = null;
+
+        Node n = startNode;
+        while(n != null){
+            if(n.data < partitionNumber){ // left
+                if(leftStartNode == null){
+                    leftStartNode = leftEndNode = n;
+                }else{
+                    leftEndNode.nextNode = n;
+                    leftEndNode = leftEndNode.nextNode;
+                }
+            }else{ // right
+                if(rightStartNode == null){
+                    rightStartNode = rightEndNode = n;
+                }else{
+                    rightEndNode.nextNode = n;
+                    rightEndNode = rightEndNode.nextNode;
+                }
+            }
+            n = n.nextNode;
+        }
+        
+        startNode = leftStartNode;
+        leftEndNode.nextNode = rightStartNode;
+        rightEndNode = null;
+        
+    }
     
 }

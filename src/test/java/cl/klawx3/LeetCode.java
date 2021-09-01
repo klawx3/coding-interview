@@ -3,13 +3,22 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Stack;
+import java.util.function.IntSupplier;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import org.junit.Test;
 
 
 public class LeetCode {
+    private Stream<String> mapToObj;
+
+
+
     /** 
      * https://leetcode.com/problems/simplify-path/
      */
@@ -38,6 +47,28 @@ public class LeetCode {
         assertThat(getSpiralMatrix(matrix2))
             .containsExactly(new int[]{1,2,3,4,8,12,11,10,9,5,6,7});
         
+    }
+
+    /**
+     * https://leetcode.com/problems/permutation-sequence/
+     */
+    @Test
+    public void permutationSecuence(){
+        
+        //System.out.println(val);
+
+    }   
+
+    private String getPermutation(int n, int k) {
+        List<String> arrOfIntString = IntStream.rangeClosed(0, n)
+            .mapToObj(Integer::toString)
+            .collect(Collectors.toList());
+        
+        return "";
+    }
+
+    private List<String> getPermutations(List<String> arrList,List<String> buildingList){
+        return null;
     }
 
     private int[] getSpiralMatrix(int[][] matrix){

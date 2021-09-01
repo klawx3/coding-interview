@@ -18,6 +18,65 @@ public class ChapterTwoTest {
     }
 
     @Test
+    public void partitionList(){
+        SingleLinkedList list = new SingleLinkedList();
+        list.appendToFront(3);
+        list.appendToFront(5);
+        list.appendToFront(8);
+        list.appendToFront(5);
+        list.appendToFront(10);
+        list.appendToFront(2);
+        list.appendToFront(1);
+        list.partionListArround(5);
+        list.printList();
+
+    }
+
+    @Test
+    public void deleteMiddleNode(){
+        SingleLinkedList list = new SingleLinkedList();
+        list.appendToFront(1);
+        list.appendToFront(2);
+        list.appendToFront(3);
+        list.appendToFront(4);
+        list.appendToFront(5);
+        list.appendToFront(6);
+
+        list.deleteMiddleNode();
+        assertThat((Iterable)list).containsExactly(1,2,4,5,6);
+    }
+
+
+    @Test
+    public void deleteMiddleNodeUpdate(){
+        SingleLinkedList list = new SingleLinkedList();
+        list.appendToFront(1);
+        list.appendToFront(2);
+        list.appendToFront(3);
+        list.appendToFront(4);
+        list.appendToFront(5);
+        list.appendToFront(6);
+
+        list.deleteMiddleNode();
+        assertThat((Iterable)list).containsExactly(1,2,4,5,6);
+    }
+
+    @Test
+    public void deleteMiddleNodeUsing3Pointers(){
+        SingleLinkedList list = new SingleLinkedList();
+        list.appendToFront(1);
+        list.appendToFront(2);
+        list.appendToFront(3);
+        list.appendToFront(4);
+        list.appendToFront(5);
+        list.appendToFront(6);
+
+        list.deleteMiddleNodeUsing3Pointers();
+        list.printList();
+        assertThat((Iterable)list).containsExactly(1,2,4,5,6);
+    }
+
+    @Test
     public void uniqueElementsSingleListTest(){
         SingleLinkedList lk = new SingleLinkedList();
         lk.appendToFront(1); 
