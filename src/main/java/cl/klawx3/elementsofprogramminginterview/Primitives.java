@@ -3,8 +3,20 @@ package cl.klawx3.elementsofprogramminginterview;
 public class Primitives {
 
     public static boolean isNumberAPalindrome(int number){
-        int numberOfBits = Math.log(number) / Math.log(2) + 1;
-        
+        int numberOfDigits = (int) (Math.log(number) / Math.log(10)) + 1;
+        int highPointer = numberOfDigits - 1;
+        int lowPointer = 0;
+        int lenght = (int) numberOfDigits / 2 ;
+        for(int i = 0 ; i < lenght; i++){
+            int highDigit = (int) (number / Math.pow(10,highPointer) ) % 10;
+            int lowDigit = (int) (number / Math.pow(10,lowPointer) ) % 10;
+            if(highDigit != lowDigit){
+                return false;
+            }
+            highPointer--;
+            lowPointer++;
+        }
+        return true;
     }
 
     public static int swapBit(int value, int bit1, int bit2) {
